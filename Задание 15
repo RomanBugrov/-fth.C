@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+unsigned long long combinations(int n, int r) {
+    if (r > n) return 0;
+    unsigned long long result = 1;
+    for (int i = 0; i < r; i++) {
+        result = result * (n - i) / (i + 1);
+    }
+    return result;
+}
+
+unsigned long long waysToDistributeApples(int N, int M) {
+    return combinations(N + M - 1, M - 1);
+}
+
+int main() {
+    int N, M;
+    printf("Введите количество яблок: ");
+    scanf("%d", &N);
+    printf("Введите количество друзей: ");
+    scanf("%d", &M);
+    printf("Количество способов разделить яблоки: %llu\n", waysToDistributeApples(N, M));
+    return 0;
+}
