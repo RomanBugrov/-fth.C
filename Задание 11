@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char number[20];
+    scanf("%s", number);
+
+    int max_count = 1, current_count = 1;
+
+    for (int i = 1; number[i] != '\0'; i++) {
+        if (number[i] == number[i - 1]) {
+            current_count++;
+        } else {
+            if (current_count > max_count) {
+                max_count = current_count;
+            }
+            current_count = 1;
+        }
+    }
+
+    if (current_count > max_count) {
+        max_count = current_count;
+    }
+
+    printf("%d\n", max_count);
+    return 0;
+}
