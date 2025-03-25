@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+char* notes[] = {"A", "B", "C", "D", "E", "F", "G"};
+int noteCount = 7;
+
+int getNoteIndex(char note) {
+    for (int i = 0; i < noteCount; i++) {
+        if (notes[i][0] == note) return i;
+    }
+    return -1;
+}
+
+void getMajorChord(char* note) {
+    int index = getNoteIndex(note[0]);
+    if (index == -1) return;
+    printf("%s, %s, %s\n", notes[index], notes[(index + 2) % noteCount], notes[(index + 4) % noteCount]);
+}
+
+void getMinorChord(char* note) {
+    int index = getNoteIndex(note[0]);
+    if (index == -1) return;
+    printf("%s, %s, %s\n", notes[index], notes[(index + 1) % noteCount], notes[(index + 4) % noteCount]);
+}
+
+int main() {
+    char chordType[3];
+    char rootNote[2];
+
+    printf("Введите основную ноту (A-G) и тип аккорда (M или m): ");
+    scanf("%s %s", rootNote, chordType);
+
+    if (strcmp(chordType, "M") == 0) {
+        printf("Аккорд %sM состоит из нот: ", rootNote);
+        getMajorChord(rootNote);
+    } else if (strcmp(chordType, "m") == 0) {
+        printf("Аккорд %sm состоит из нот: ", rootNote);
+        getMinorChord(rootNote);
+    } else {
+        printf("Неверный тип аккорда.\n");
+    }
+
+    return 0;
+}
