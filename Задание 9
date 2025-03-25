@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    double number;
+    scanf("%lf", &number);
+
+    if (number == 0) {
+        printf("0.00 * 10^0\n");
+        return 0;
+    }
+
+    int exponent = 0;
+    while (number >= 10.0) {
+        number /= 10.0;
+        exponent++;
+    }
+    while (number < 1.0) {
+        number *= 10.0;
+        exponent--;
+    }
+
+    printf("%.2lf * 10^%d\n", number, exponent);
+    return 0;
+}
