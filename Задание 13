@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int dividend, divisor;
+    scanf("%d%d", &dividend, &divisor);
+
+    if (divisor == 0) {
+        printf("Ошибка\n");
+        return 0;
+    }
+
+    int quotient = dividend / divisor;
+    int remainder = dividend % divisor;
+
+    printf("Частное: %d\n", quotient);
+    printf("Остаток: %d\n", remainder);
+    return 0;
+}
