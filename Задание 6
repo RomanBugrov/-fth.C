@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int count100, count10, count5, count1;
+    int cost, given;
+    scanf("%d%d%d%d%d%d", &count100, &count10, &count5, &count1, &cost, &given);
+
+    int change_needed = given - cost;
+    int original_change = change_needed;
+
+    if (change_needed < 0) {
+        printf("NO\n");
+        return 0;
+    }
+
+    int change100 = change_needed / 100;
+    if (change100 > count100) change100 = count100;
+    change_needed -= change100 * 100;
+
+    int change10 = change_needed / 10;
+    if (change10 > count10) change10 = count10;
+    change_needed -= change10 * 10;
+
+    int change5 = change_needed / 5;
+    if (change5 > count5) change5 = count5;
+    change_needed -= change5 * 5;
+
+    int change1 = change_needed;
+    if (change1 > count1) {
+        printf("NO\n");
+        return 0;
+    }
+
+    printf("YES\n");
+    printf("%d %d %d %d\n", change100, change10, change5, change1);
+    return 0;
+}
