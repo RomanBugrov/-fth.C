@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    scanf("%d%d", &a, &b);
+    
+    if (a <= 0 || b <= 0 || a != b) {
+        printf("NO\n");
+        return 0;
+    }
+    
+    int height = a; 
+    int width = a * 2 - 1;
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < (width / 2) - i; j++) {
+            printf(" ");
+        }
+        
+        for (int j = 0; j < (i * 2) + 1; j++) {
+            printf("*");
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
